@@ -7,13 +7,14 @@
 </head>
 <body>
     <my-header></my-header>
-    <my-caption></my-caption>
-    <my-section></my-section>
+    <div id="main-content"></div>
     <my-footer></my-footer>
 
-    <script src="./components/Caption.js"></script>
     <script src="./components/Header.js"></script>
-    <script src="./components/Section.js"></script>
     <script src="./components/Footer.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        window.onload = () => loadPage('home');
+    </script>
 </body>
 </html>

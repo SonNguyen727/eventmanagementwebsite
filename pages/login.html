@@ -1,0 +1,25 @@
+<h2>Login</h2>
+<p>Sign in to your account.</p>
+<form id="login-form">
+  <input type="email" id="login-email" placeholder="Email" required><br><br>
+  <input type="password" id="login-password" placeholder="Password" required><br><br>
+  <label><input type="checkbox" id="remember"> Remember me</label><br><br>
+  <button type="submit">Sign In</button>
+  <p><a href="#" onclick="loadPage('register'); return false;">No account? Register</a></p>
+</form>
+
+<script>
+document.getElementById('login-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Login successful!');
+  loadPage('home');
+});
+</script>
+
+<style>
+#login-form { max-width: 400px; }
+input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #1e3a8a; border-radius: 4px; box-sizing: border-box; }
+button { background: #1e3a8a; color: white; width: 100%; padding: 12px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+label { font-size: 14px; }
+a { color: #1e3a8a; text-decoration: none; }
+</style>
