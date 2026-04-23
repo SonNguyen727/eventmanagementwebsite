@@ -11,6 +11,7 @@
     <h2>Login</h2>
     <p>Sign in to your account.</p>
     <form id="login-form">
+      <div class="form-message" id="login-message"></div>
       <label for="login-email" class="sr-only">Email</label>
       <input type="email" id="login-email" placeholder="Email" aria-label="Email address" required>
       <label for="login-password" class="sr-only">Password</label>
@@ -39,10 +40,34 @@
   adjustLoginHeight();
   window.addEventListener('resize', adjustLoginHeight);
 
-  document.getElementById('login-form').addEventListener('submit', (e) => {
+  const form = document.getElementById('login-form');
+  const msgEl = document.getElementById('login-message');
+
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('Login successful!');
-    loadPage('home');
+    msgEl.textContent = '';
+    msgEl.className = 'form-message';
+
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    const remember = document.getElementById('remember').checked;
+
+    if (!email || !password) {
+      msgEl.textContent = 'Please enter both email and password.';
+      msgEl.classList.add('error');
+      return;
+    }
+
+    const result = DB.login(email, password, remember);
+    if (result.success) {
+      msgEl.textContent = result.message;
+      msgEl.classList.add('success');
+      updateHeaderAuth();
+      setTimeout(() => loadPage('home'), 600);
+    } else {
+      msgEl.textContent = result.message;
+      msgEl.classList.add('error');
+    }
   });
 })();
   </script>
@@ -79,6 +104,8 @@
       margin: 30px 0 30px 0;
       width: min(90%, 400px);
       text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     }
 
     h2 {
@@ -97,6 +124,20 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+    }
+
+    .form-message {
+      font-size: 0.9rem;
+      min-height: 1.2em;
+      margin-bottom: 0.25rem;
+    }
+
+    .form-message.error {
+      color: #dc2626;
+    }
+
+    .form-message.success {
+      color: #16a34a;
     }
 
     input[type="email"],
@@ -142,9 +183,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
-      min-height: 48px; /* Touch-friendly */
+      min-height: 48px;
     }
-
 
     button:active {
       transform: scale(0.98);
@@ -164,7 +204,6 @@
       text-decoration: underline;
     }
 
-    /* Tablet adjustments */
     @media (max-width: 768px) {
       .login-container {
         margin: 1rem;
@@ -172,7 +211,6 @@
       }
     }
 
-    /* Mobile adjustments */
     @media (max-width: 480px) {
       .login-container {
         padding: 1.5rem;
@@ -180,11 +218,11 @@
 
       input[type="email"],
       input[type="password"] {
-        min-height: 48px; /* Touch-friendly */
+        min-height: 48px;
       }
 
       .checkbox-label {
-        font-size: 16px; /* Prevent zoom on iOS */
+        font-size: 16px;
       }
     }
 
@@ -195,7 +233,6 @@
       }
     }
 
-    /* Accessibility: Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -208,3 +245,4 @@
   </style>
 </body>
 </html>
+
