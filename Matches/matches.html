@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Thể Thao - Kết Quả Trận Đấu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Match</h1>
+            <p class="hero-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad maxime velit nostrum praesentium voluptatem.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="highlight-match">
+            <div class="match-banner">
+                <div class="team">
+                    <img src="team1.jpg" alt="Sea Hawks" class="team-logo">
+                    <h3>Sea Hawks</h3>
+                    <p>BRAZIL</p>
+                </div>
+                <div class="match-info">
+                    <p class="league">PREMIER LEAGUE — ROUND 10</p>
+                    <div class="score">3:2</div>
+                    <p class="date">10 SEPTEMBER / 7:30 AM</p>
+                </div>
+                <div class="team">
+                    <img src="team2.jpg" alt="Steelers" class="team-logo">
+                    <h3>Steelers</h3>
+                    <p>LONDON</p>
+                </div>
+            </div>
+
+            <div class="countdown-bar">
+                <div class="next-match-label">Next match</div>
+                <div class="timer">
+                    <span id="weeks">00</span><small>weeks</small>
+                    <span id="days">00</span><small>days</small>
+                    <span id="hr">00</span><small>hr</small>
+                    <span id="min">00</span><small>min</small>
+                    <span id="sec">00</span><small>sec</small>
+                </div>
+                <div class="next-match-teams">
+                    <img src="team1.jpg" alt=""> SEA HAWLKS <span>VS</span> <img src="team3.jpg" alt=""> PATRIOTS
+                </div>
+            </div>
+        </section>
+
+        <section class="match-list">
+            <div class="match-row">
+                <div class="row-team-left">
+                    <img src="team1.jpg" alt="">
+                    <div>
+                        <h4>Packers</h4>
+                        <small>BRAZIL</small>
+                    </div>
+                </div>
+                <div class="row-score">3:2</div>
+                <div class="row-team-right">
+                    <div>
+                        <h4>Steelers</h4>
+                        <small>LONDON</small>
+                    </div>
+                    <img src="team2.jpg" alt="">
+                </div>
+            </div>
+            <div class="pagination">
+                <button>&lt;</button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button>&gt;</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
