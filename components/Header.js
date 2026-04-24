@@ -19,6 +19,7 @@ class Header extends HTMLElement {
                     <ul class="nav-links">
                         <li><a href="#home" onclick="loadPage('home'); return false;">Home</a></li>
                         <li><a href="#events" onclick="loadPage('events'); return false;">Events</a></li>
+                        <li><a href="#teams" onclick="loadPage('teams'); return false;">Teams</a></li>
                         <li><a href="#about" onclick="loadPage('about'); return false;">About</a></li>
                         <li><a href="#contact" onclick="loadPage('contact'); return false;">Contact</a></li>
                     </ul>
