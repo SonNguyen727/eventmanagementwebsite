@@ -118,8 +118,7 @@
   padding: 80px 20px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("halaand.avifile.com/images/2024/06/17/haland.jpg") no-repeat
-      center/cover;
+    url(halaand.jpg) no-repeat center/cover;
   min-height: 400px;
   display: flex;
   align-items: center;
