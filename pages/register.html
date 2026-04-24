@@ -52,7 +52,6 @@
     const name = document.getElementById('reg-name').value.trim();
     const email = document.getElementById('reg-email').value.trim();
     const password = document.getElementById('reg-password').value;
-    const phone = document.getElementById('reg-phone').value.trim();
 
     if (!name || !email || !password) {
       msgEl.textContent = 'Please fill in all required fields.';
@@ -66,16 +65,8 @@
       return;
     }
 
-    const result = DB.register(name, email, password, phone);
-    if (result.success) {
-      msgEl.textContent = result.message + ' Redirecting to login...';
-      msgEl.classList.add('success');
-      form.reset();
-      setTimeout(() => loadPage('login'), 1200);
-    } else {
-      msgEl.textContent = result.message;
-      msgEl.classList.add('error');
-    }
+    msgEl.textContent = 'Registration functionality is not available.';
+    msgEl.classList.add('error');
   });
 })();
   </script>
