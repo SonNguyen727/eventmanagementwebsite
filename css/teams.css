@@ -1,0 +1,131 @@
+  .team-hero {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .team-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .team-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #93c5fd;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .team-hero h1 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    margin-bottom: 18px;
+  }
+
+  .team-hero p {
+    font-size: 1.1rem;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #dbeafe;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 24px;
+    padding: 60px 20px 120px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .team-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
+  }
+
+  .team-photo {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .team-photo.coach {
+    background-image: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  }
+
+  .team-photo.trainer {
+    background-image: linear-gradient(135deg, #10b981 0%, #22c55e 100%);
+  }
+
+  .team-photo.manager {
+    background-image: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+  }
+
+  .team-photo.support {
+    background-image: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  }
+
+  .team-info {
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .team-info h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: #0f172a;
+  }
+
+  .team-info p {
+    margin: 0;
+    color: #475569;
+    font-weight: 600;
+  }
+
+  .ticket-button {
+    margin-top: auto;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .ticket-button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+  }
+
+  @media (max-width: 680px) {
+    .team-hero {
+      padding: 60px 16px;
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr;
+      padding-top: 40px;
+    }
+  }
