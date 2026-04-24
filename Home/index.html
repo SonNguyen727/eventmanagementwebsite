@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportz Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === BASE STYLES === */
+        :root {
+            --primary-red: #f43f3f;
+            --dark-bg: #0a0a0a;
+            --text-light: #ffffff;
+            --text-gray: #888888;
+            --bg-light: #f9f9f9;
+            --border-color: #eeeeee;
+            --yellow-bg: #dfb30f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* === TOP BAR === */
+        .top-bar {
+            background-color: #ffffff;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-red);
+        }
+
+        .contact-info span {
+            margin-left: 20px;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+        }
+
+        /* === HEADER / NAVBAR === */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            background-color: var(--primary-red);
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 15px;
+            z-index: 10;
+        }
+
+        .nav-links {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-red);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            /* Placeholder gradient instead of image */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #333;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* === COUNTDOWN SECTION === */
+        .countdown-section {
+            background-color: #ffffff;
+            margin: -40px auto 40px;
+            position: relative;
+            z-index: 5;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            max-width: 1200px;
+        }
+
+        .countdown-left span {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .timer {
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+        .timer small {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-right: 15px;
+        }
+
+        .matchup-mini {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .team-logo-mini {
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 15px;
+        }
+
+        .vs {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin: 0 15px;
+        }
+
+        /* === FEATURED MATCH BANNER === */
+        .featured-match {
+            background-color: var(--yellow-bg);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .featured-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .team-block {
+            display: flex;
+            align-items: center;
+            width: 300px;
+        }
+
+        .team-block.left {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .team-block.right {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .team-logo-large {
+            width: 80px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 0 20px;
+        }
+
+        .team-name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .team-location {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .score-board {
+            margin: 0 40px;
+        }
+
+        .league-name {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-size: 32px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .match-date {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* === LATEST MATCHES SECTION === */
+        .latest-matches {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0;
+        }
+
+        .tab {
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--text-gray);
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .tab.active {
+            color: #333;
+            border-bottom: 2px solid var(--primary-red);
+        }
+
+        .match-list {
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .match-row:last-child {
+            border-bottom: none;
+        }
+
+        .match-team {
+            display: flex;
+            align-items: center;
+            width: 200px;
+        }
+
+        .match-team.right {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .match-team-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .match-team.left .match-team-info { margin-left: 15px; }
+        .match-team.right .match-team-info { margin-right: 15px; }
+
+        .row-score {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 3px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="contact-info">
+                <span><i class="fas fa-envelope"></i> youremail@domain.com</span>
+                <span><i class="fas fa-phone"></i> +1 232 3532 321</span>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">sportz</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">HOME <i class="fas fa-chevron-down" style="font-size:10px;"></i></a></li>
+                <li><a href="#">NEWS <i class="fas fa-chevron-down" style="font-size:10px;"></i></a></li>
+                <li><a href="#">MATCHES</a></li>
+                <li><a href="#">TEAM</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Russia's World Cup<br>Championship</h1>
+            <button class="btn">READ MORE</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="countdown-section">
+            <div class="countdown-left">
+                <span>Next match</span>
+                <div class="timer">
+                    00 <small>weeks</small> 
+                    00 <small>days</small> 
+                    00 <small>hr</small> 
+                    00 <small>min</small> 
+                    00 <small>sec</small>
+                </div>
+            </div>
+            <div class="matchup-mini">
+                <div class="team-logo-mini"></div>
+                SEA HAWLKS
+                <span class="vs">VS</span>
+                <div class="team-logo-mini"></div>
+                PATRIOTS
+            </div>
+        </section>
+    </div>
+
+    <section class="featured-match">
+        <div class="container featured-content">
+            <div class="team-block left">
+                <div>
+                    <div class="team-name">Sea Hawks</div>
+                    <div class="team-location">BRAZIL</div>
+                </div>
+                <div class="team-logo-large"></div>
+            </div>
+            
+            <div class="score-board">
+                <div class="league-name">PREMIER LEAGUE — ROUND 10</div>
+                <div class="score">3:2</div>
+                <div class="match-date">10 SEPTEMBER / 7:30 AM</div>
+            </div>
+
+            <div class="team-block right">
+                <div class="team-logo-large"></div>
+                <div>
+                    <div class="team-name">Steelers</div>
+                    <div class="team-location">LONDON</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest-matches">
+        <div class="container">
+            <h2 class="section-title">LATEST MATCHES</h2>
+            
+            <div class="tabs">
+                <div class="tab active">MATCH 1</div>
+                <div class="tab">MATCH 2</div>
+                <div class="tab">MATCH 3</div>
+            </div>
+
+            <div class="match-list">
+                <div class="match-row">
+                    <div class="match-team left">
+                        <div class="team-logo-mini"></div>
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Packers</span>
+                            <span class="team-location" style="color: #bbb;">BRAZIL</span>
+                        </div>
+                    </div>
+                    <div class="row-score">3:2</div>
+                    <div class="match-team right">
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Steelers</span>
+                            <span class="team-location" style="color: #bbb;">LONDON</span>
+                        </div>
+                        <div class="team-logo-mini"></div>
+                    </div>
+                </div>
+
+                <div class="match-row">
+                    <div class="match-team left">
+                        <div class="team-logo-mini"></div>
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Patriots</span>
+                            <span class="team-location" style="color: #bbb;">BRAZIL</span>
+                        </div>
+                    </div>
+                    <div class="row-score">3:2</div>
+                    <div class="match-team right">
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Cowboys</span>
+                            <span class="team-location" style="color: #bbb;">LONDON</span>
+                        </div>
+                        <div class="team-logo-mini"></div>
+                    </div>
+                </div>
+
+                <div class="match-row">
+                    <div class="match-team left">
+                        <div class="team-logo-mini"></div>
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Raiders</span>
+                            <span class="team-location" style="color: #bbb;">BRAZIL</span>
+                        </div>
+                    </div>
+                    <div class="row-score">3:2</div>
+                    <div class="match-team right">
+                        <div class="match-team-info">
+                            <span class="team-name" style="font-size: 18px;">Chiefs</span>
+                            <span class="team-location" style="color: #bbb;">LONDON</span>
+                        </div>
+                        <div class="team-logo-mini"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
