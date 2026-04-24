@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football News - Top 6 Clubs Update</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a5f2a, #2e8b57);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2e8b57;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            color: #1a5f2a;
+            margin-bottom: 10px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-header {
+            color: white;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .team-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-content {
+            padding: 20px;
+        }
+
+        .team-content h3 {
+            color: #222;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .team-content p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .team-content .highlight {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-left: 4px solid #2e8b57;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .city { background-color: #6CABDD; }
+        .madrid { background-color: #00529F; }
+        .bayern { background-color: #DC052D; }
+        .psg { background-color: #004170; }
+        .barcelona { background-color: #A50044; }
+        .liverpool { background-color: #C8102E; }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Football Weekly News</h1>
+        <p>Latest updates from Europe's top 6 football clubs</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Premier League</a>
+        <a href="#">La Liga</a>
+        <a href="#">Bundesliga</a>
+        <a href="#">Ligue 1</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Weekly Roundup: The Big Six</h2>
+            <p>
+                This week in European football has been nothing short of spectacular. From stunning victories 
+                to dramatic comebacks, the continent's elite clubs have delivered unforgettable moments. 
+                Below is a comprehensive update on six of the biggest football clubs in Europe, covering their 
+                latest performances, key players, and what to expect in the coming fixtures.
+            </p>
+        </div>
+
+        <div class="teams-grid">
+
+            <!-- Manchester City -->
+            <div class="team-card">
+                <div class="team-header city">Manchester City</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Etihad_Stadium.jpg/640px-Etihad_Stadium.jpg" alt="Etihad Stadium - Manchester City">
+                </div>
+                <div class="team-content">
+                    <h3>Guardiola's Machine Keeps Rolling</h3>
+                    <p>
+                        Manchester City continues to dominate English football with their trademark possession-based 
+                        style. Erling Haaland has been in sensational form, netting another brace in their latest 
+                        league fixture. The team's midfield trio of Rodri, Kovacic, and Foden has controlled games 
+                        with remarkable efficiency.
+                    </p>
+                    <p>
+                        City's defensive solidity remains unmatched, having conceded the fewest goals in the league. 
+                        With Kevin De Bruyne returning to full fitness, the sky blues look unstoppable as they push 
+                        for another Premier League title.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: Haaland has now scored 28 goals in all competitions this season.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real Madrid -->
+            <div class="team-card">
+                <div class="team-header madrid">Real Madrid</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Santiago_Bernabeu_Stadium_-_01.jpg/640px-Santiago_Bernabeu_Stadium_-_01.jpg" alt="Santiago Bernabeu - Real Madrid">
+                </div>
+                <div class="team-content">
+                    <h3>Los Blancos Eye Another European Crown</h3>
+                    <p>
+                        Real Madrid's blend of youth and experience is paying dividends this season. Jude Bellingham 
+                        has been a revelation since his arrival, scoring crucial goals and providing leadership beyond 
+                        his years. Vinicius Junior continues to terrorize defenses with his blistering pace.
+                    </p>
+                    <p>
+                        Manager Carlo Ancelotti has masterfully rotated his squad, keeping key players fresh for the 
+                        business end of the season. The Santiago Bernabeu remains a fortress, with Madrid maintaining 
+                        an impressive unbeaten home record.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: Bellingham leads La Liga scoring charts with 16 goals from midfield.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bayern Munich -->
+            <div class="team-card">
+                <div class="team-header bayern">Bayern Munich</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Allianz_Arena%2C_Munich%2C_Germany.jpg/640px-Allianz_Arena%2C_Munich%2C_Germany.jpg" alt="Allianz Arena - Bayern Munich">
+                </div>
+                <div class="team-content">
+                    <h3>Bavarians Bounce Back in Title Race</h3>
+                    <p>
+                        Bayern Munich responded to early-season criticism with a string of dominant performances. 
+                        Harry Kane has silenced doubters with his incredible goal-scoring record, adapting seamlessly 
+                        to the Bundesliga. Jamal Musiala has been magical, weaving through defenses with his dribbling 
+                        ability.
+                    </p>
+                    <p>
+                        The defense, marshaled by Kim Min-jae and Dayot Upamecano, has shown significant improvement. 
+                        With Leroy Sane and Kingsley Coman providing width, Bayern's attack looks as lethal as ever 
+                        as they chase a record-extending league title.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: Kane has 32 goals in 28 appearances since joining from Tottenham.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paris Saint-Germain -->
+            <div class="team-card">
+                <div class="team-header psg">Paris Saint-Germain</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Parc_des_Princes_%281%29.jpg/640px-Parc_des_Princes_%281%29.jpg" alt="Parc des Princes - PSG">
+                </div>
+                <div class="team-content">
+                    <h3>PSG's New Era Under Luis Enrique</h3>
+                    <p>
+                        Paris Saint-Germain has entered a new chapter with manager Luis Enrique instilling a more 
+                        collective approach. Kylian Mbappe continues to shine as the talisman, but the team now 
+                        relies less on individual brilliance. Ousmane Dembele has added unpredictability to the wing.
+                    </p>
+                    <p>
+                        The midfield partnership of Vitinha and Warren Zaire-Emery has brought energy and creativity. 
+                        PSG sits comfortably at the top of Ligue 1 and remains a formidable force in the Champions 
+                        League knockout stages.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: PSG has won 14 of their last 16 domestic league matches.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barcelona -->
+            <div class="team-card">
+                <div class="team-header barcelona">Barcelona</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Camp_Nou_during_El_Clasico.jpg/640px-Camp_Nou_during_El_Clasico.jpg" alt="Camp Nou - Barcelona">
+                </div>
+                <div class="team-content">
+                    <h3>Young Guns Lead the Catalan Revival</h3>
+                    <p>
+                        Barcelona's famous La Masia academy is producing the goods once again. Lamine Yamal, at just 
+                        16 years old, has become one of the most exciting prospects in world football. Pedri and 
+                        Gavi continue to control the tempo in midfield with their intelligent passing.
+                    </p>
+                    <p>
+                        Xavi Hernandez has implemented a more pragmatic style, balancing possession with defensive 
+                        organization. The emergence of defenders like Pau Cubarsi has strengthened the backline. 
+                        Barcelona remains in contention on multiple fronts this season.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: Lamine Yamal became the youngest scorer in El Clasico history at 16 years old.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liverpool -->
+            <div class="team-card">
+                <div class="team-header liverpool">Liverpool</div>
+                <div class="team-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Anfield_Stadium%2C_Liverpool.jpg/640px-Anfield_Stadium%2C_Liverpool.jpg" alt="Anfield Stadium - Liverpool">
+                </div>
+                <div class="team-content">
+                    <h3>Reds Reloaded Under New Management</h3>
+                    <p>
+                        Liverpool has transitioned smoothly into a new era with their new manager building on 
+                        Jurgen Klopp's heavy-metal football. Mohamed Salah continues to deliver goals and assists 
+                        at an elite level. The signing of Alexis Mac Allister has added creativity and work rate 
+                        to the midfield.
+                    </p>
+                    <p>
+                        Darwin Nunez has found his scoring boots, complementing the attack with his relentless 
+                        pressing. The defense, led by Virgil van Dijk, has rediscovered its solidity. Anfield 
+                        remains one of the most intimidating venues in European football.
+                    </p>
+                    <div class="highlight">
+                        Key Stat: Liverpool has scored 3+ goals in 8 of their last 10 home matches.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Football Weekly News &copy; 2024. All rights reserved.</p>
+        <p>Your trusted source for football updates from around the globe.</p>
+    </footer>
+
+</body>
+</html>
+

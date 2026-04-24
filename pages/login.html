@@ -50,7 +50,6 @@
 
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
-    const remember = document.getElementById('remember').checked;
 
     if (!email || !password) {
       msgEl.textContent = 'Please enter both email and password.';
@@ -58,16 +57,8 @@
       return;
     }
 
-    const result = DB.login(email, password, remember);
-    if (result.success) {
-      msgEl.textContent = result.message;
-      msgEl.classList.add('success');
-      updateHeaderAuth();
-      setTimeout(() => loadPage('home'), 600);
-    } else {
-      msgEl.textContent = result.message;
-      msgEl.classList.add('error');
-    }
+    msgEl.textContent = 'Login functionality is not available.';
+    msgEl.classList.add('error');
   });
 })();
   </script>

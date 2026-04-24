@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 10%;
+}
+
+.hero-title {
+    background: black;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+/* Highlight Match */
+.match-banner {
+    background: #e6bc15; /* Màu vàng như ảnh 2 */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.team-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+.score {
+    background: black;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Countdown Bar */
+.countdown-bar {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.timer span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Match List */
+.match-row {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.row-score {
+    background: #111;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+}
+
+.row-team-left, .row-team-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 30%;
+}
+
+.row-team-left img, .row-team-right img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pagination button.active {
+    background: #ff4d4d;
+    color: white;
+    border-color: #ff4d4d;
+}
