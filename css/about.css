@@ -118,7 +118,7 @@
   padding: 80px 20px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(halaand.jpg) no-repeat center/cover;
+    url(../picture/halaand.jpg) no-repeat center/cover;
   min-height: 400px;
   display: flex;
   align-items: center;
