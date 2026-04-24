@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - User Management</title>
+</head>
+<body class="admin-page">
+  <div class="admin-wrapper" id="admin-wrapper">
+    <div class="admin-container">
+      <h2>Admin Dashboard</h2>
+      <p>Manage registered user accounts.</p>
+
+      <div class="admin-stats" id="admin-stats">
+        <div class="stat-box">
+          <div class="stat-number" id="total-users">0</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="admin-users">0</div>
+          <div class="stat-label">Admins</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="regular-users">0</div>
+          <div class="stat-label">Regular Users</div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="users-table" id="users-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Registered</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn-secondary" onclick="loadPage('home')">← Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+(function() {
+  function adjustAdminHeight() {
+    const header = document.querySelector('my-header');
+    const footer = document.querySelector('my-footer');
+    const wrapper = document.getElementById('admin-wrapper');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const footerHeight = footer ? footer.offsetHeight : 0;
+    if (wrapper) {
+      wrapper.style.minHeight = (window.innerHeight - headerHeight - footerHeight) + 'px';
+    }
+  }
+  adjustAdminHeight();
+  window.addEventListener('resize', adjustAdminHeight);
+
+  function renderUsers() {
+    const users = DB.getAllUsers();
+    const tbody = document.getElementById('users-tbody');
+    const currentUser = DB.getCurrentUser();
+
+    // Update stats
+    document.getElementById('total-users').textContent = users.length;
+    document.getElementById('admin-users').textContent = users.filter(u => u.role === 'admin').length;
+    document.getElementById('regular-users').textContent = users.filter(u => u.role === 'user').length;
+
+    if (!users.length) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;">No users found.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = users.map((user, index) => {
+      const date = new Date(user.createdAt).toLocaleDateString();
+      const isSelf = currentUser && currentUser.id === user.id;
+      const roleBadge = user.role === 'admin'
+        ? '<span class="badge admin-badge">Admin</span>'
+        : '<span class="badge user-badge">User</span>';
+
+      return `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${escapeHtml(user.name)}</td>
+          <td>${escapeHtml(user.email)}</td>
+          <td>${escapeHtml(user.phone || '-')}</td>
+          <td>${roleBadge}</td>
+          <td>${date}</td>
+          <td>
+            ${!isSelf ? `<button class="btn-delete" onclick="deleteUserAccount('${user.id}')">🗑️ Delete</button>` : '<span style="color:#999;font-size:0.85em;">(You)</span>'}
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Expose delete function globally for inline onclick
+  window.deleteUserAccount = function(userId) {
+    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
+    const result = DB.deleteUser(userId);
+    if (result.success) {
+      alert(result.message);
+      renderUsers();
+      updateHeaderAuth();
+    } else {
+      alert(result.message);
+    }
+  };
+
+  // Check admin access
+  if (!DB.isAdmin()) {
+    alert('Access denied. Admin login required.');
+    loadPage('login');
+    return;
+  }
+
+  renderUsers();
+})();
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .admin-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: url(/assets/netherlands-national-football-team-determination-6zyc87madrkwpx7y.jpg);
+      color: #333;
+      padding: 2rem 1rem;
+    }
+
+    .admin-container {
+      background: white;
+      padding: clamp(2rem, 5vw, 3rem);
+      margin: 30px 0;
+      width: min(95%, 900px);
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #000;
+    }
+
+    p {
+      margin: 0 0 2rem 0;
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+
+    .users-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .users-table thead {
+      background: #1e3a8a;
+      color: white;
+    }
+
+    .users-table th,
+    .users-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .users-table tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .admin-badge {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .user-badge {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-delete:hover {
+      background: #dc2626;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #1e293b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .admin-container {
+        margin: 1rem 0;
+        width: 100%;
+      }
+
+      .users-table th,
+      .users-table td {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Accessibility: Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</body>
+</html>
+
